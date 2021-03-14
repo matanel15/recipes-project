@@ -1,0 +1,194 @@
+<!--main page-design and buttons-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>recipes</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+      body{
+       background-image: url("https://d3m9l0v76dty0.cloudfront.net/system/photos/3837104/large/91b1695079a646e1d371952ecb52358a.jpg");
+     }
+
+
+
+
+
+      h1{
+        font-family: 'Dancing Script', cursive;
+        font-size: 120px;
+        text-align: center;
+        color: rgb(240, 11, 11);
+
+      }
+      h2{
+        font-family: 'Dancing Script', cursive;
+        font-size: 60px;
+        text-align: center;
+        color: rgb(240, 11, 11);
+
+      }
+
+      .carousel-inner img {
+        width: 1350px;
+        height: 430px; 
+        
+  }
+      input[type=text] {
+          padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid red;
+        border-radius: 4px;
+      }
+      
+      .input_design{
+        font-size: 20px;
+        text-align: center;
+        color:black;
+        font-weight: bolder;
+
+      }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+     
+  
+
+
+
+
+  
+    
+  </head>
+  <body class="container-fluid" >
+    <h1  >Recipes</h1>
+    <br>
+    <center>
+      <!--carousel of 3 images-->
+      <div id="demo" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+          <li  data-slide-to="0" class="active"></li>
+          <li  data-slide-to="1"></li>
+          <li  data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://images.maariv.co.il/image/upload/f_auto,fl_lossy/c_fill,g_faces:center,w_690/577223" alt="0" width="1100" height="500">
+            <div class="carousel-caption">
+              <h3>COOKING IS LIFE!</h3>
+              
+            </div>   
+          </div>
+          <div class="carousel-item">
+            <img src="https://ynet-images1.yit.co.il/PicServer4/2016/09/27/7295214/1.jpg" alt="1" width="1100" height="500">
+            <div class="carousel-caption">
+              <h3>LIFE IS COOKING</h3>
+              
+            </div>   
+          </div>
+          <div class="carousel-item">
+            <img src="https://www.emeknews.co.il/wp-content/uploads/2015/11/%D7%A1%D7%99%D7%A8-%D7%90%D7%95%D7%9B%D7%9C.jpg" alt="2" width="1100" height="500">
+            <div class="carousel-caption">
+              <h3>AWESOME RECIPES</h3>
+              
+            </div>   
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+      </center>
+      <br>
+      
+    
+    <!--generates the add button-->
+     <a class="btn btn-warning btn-lg btn-block" href="/add">Add Recipe</a>
+
+    <!--generates the table-->
+      <div class="card">
+        <% if(data.length) { %>
+        <table class="table table-hover table-dark" style="table-layout: fixed;">
+          <thead>
+            <tr>
+              <th scope="col">NUM</th>
+              <th scope="col">Name</th>
+              <th scope="col">Ethnic</th>
+              <th scope="col">Ingredients</th>
+              <th scope="col" style="width: 400px;">Preparation</th>
+              <th width="200px">Action</th>
+            </tr>
+          </thead>
+          
+          <!--filling the table with the data from mysql-->
+          <tbody>
+            <% for(var i = 0; i< data.length; i++) { %>
+            <tr>
+              <th scope="row"><%= (i+1) %></th>
+              <td><%= data[i].name%></td>
+              <td><%= data[i].ethnic%></td>
+              <td><%= data[i].ingredients%></td>
+              <td><%= data[i].preparation%></td>
+              <td>
+                <!--generates the edit button with the spesific recipe-->
+                <a class="btn btn-light btn-lg btn-block" href="../edit/<%=data[i].id%>"
+                  >Edit</a>
+
+                <!--generates the delete button on the chosen recipe-->
+                <a class="btn btn-danger btn-lg btn-block"
+                  href="../delete/<%=data[i].id%>"
+                  >Delete</a>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <% } %>
+
+        <!-- if result is empty -->
+        <% if(!data.length) { %>
+        <p class="text-center">No Recipe found!</p>
+        <% } %>
+      </div>
+    </div>
+    <br>
+    <h2>have ideas to improve the design? contact us!</h2>
+
+<form action="mailto:matanel15@gmail.com,ravid150796@gmail.com " class="input_design" method="post" enctype="text/plain">
+first name:<br>
+<input type="text"  name="name"><br>
+E-mail address:<br>
+<input type="text" name="mail"><br>
+your idea?:<br> 
+<div class="form-group">
+  <center>
+  <textarea
+    style= "width:400px; height:100px;border: 2px solid red;"
+    type="text"
+    class="form-control"
+    name="comment"
+    autocomplete="off">  </textarea>
+  </center>
+</div>         
+<input type="submit" class="btn btn-warning" value="Send">
+<input type="reset"  class="btn btn-warning" value="Reset">
+</form>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!--edit func page-design and buttons-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Edit Recipe</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .lab{      
+        font-size: 30px;
+        color: rgb(226, 216, 216);
+        
+      }
+      h1{
+        font-family: 'Dancing Script', cursive;
+        font-size: 120px;
+        text-align: center;
+        color: rgb(240, 11, 11);
+
+      }
+      input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid red;
+        border-radius: 4px;
+      }
+
+      body{
+       background-image: url("https://d3m9l0v76dty0.cloudfront.net/system/photos/3837104/large/91b1695079a646e1d371952ecb52358a.jpg");
+       
+     }
+
+    </style>
+
+
+
+
+
+
+
+  </head>
+  <body class="container">
+    <h1>Edit Recipe</h1>
+    <br>
+    <div class="card">
+      
+      <div class="card-body" style="background-color: rgb(47, 51, 56);" >
+        <form action="/update/<%= id %>" method="post">
+
+
+          <div class="form-group">
+            <label class="lab">Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              value="<%= name %>"
+              autocomplete="off"
+            />
+          </div>
+
+
+
+          <div class="form-group">
+            <label class="lab">Ethnic:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="ethnic"
+              value="<%= ethnic %>"
+              autocomplete="off"
+            />
+          </div>
+          <div class="form-group">
+            <label class="lab">Ingredients:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="ingredients"
+              value="<%= ingredients %>"
+              autocomplete="off"
+            />
+          </div>
+
+
+          <div class="form-group">
+            <label class="lab" for="Preparation">Preparation:</label>
+            <textarea
+              style= "border: 2px solid red"
+              type="text"
+              class="form-control"
+              name="preparation"
+              autocomplete="off"
+            > <%= preparation %> </textarea>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="btn btn-warning btn-lg btn-block" value="Update" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
